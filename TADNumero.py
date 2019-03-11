@@ -44,8 +44,5 @@ class Data:
         else:
             return -1
 
-    def escreveExtenso(self):
-        if self.inicializaData() == -1:
-            return -1
-        else:
-            return "Data {}/{}/{}".format(self.dia, self.mes, self.ano)
+    def __str__(self):
+        return "Data {}/{}/{}".format(self.dia, self.mes, self.ano)
