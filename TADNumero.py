@@ -46,3 +46,27 @@ class Data:
 
     def __str__(self):
         return "Data {}/{}/{}".format(self.dia, self.mes, self.ano)
+
+
+class Fila:
+    def __init__(self):
+        self.alunos = []
+
+    def inserir(self, nome, matricula):
+        self.aluno = [nome, matricula]
+        self.alunos.append(self.aluno)
+        print("Aluno inserido")
+
+    def excluir(self):
+        if not self.vazia():
+            return self.alunos.pop(0)
+
+    def tamanho(self):
+        return len(self.alunos)
+
+    def vazia(self):
+        return self.tamanho() == 0
+
+    def escreve(self):
+        for aluno in self.alunos:
+            print ("Nome: {}  Matricula: {}".format(aluno[0], aluno[1]))
