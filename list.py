@@ -39,15 +39,26 @@ class lista:
             return "Error: Impossivel apagar lista vazia"
         else:
             rem = self.elemento[self.ini+pos]
-            for i in range(self.ini+pos, self.fim):
-                self.elemento[i] = self.elemento[i+1]
-            self.elemento[self.fim]=0
-            self.fim=self.fim-1
+            if pos-self.ini>self.fim-pos:
+                for i in range(self.ini+pos, self.fim):
+                    self.elemento[i] = self.elemento[i+1]
+                self.elemento[self.fim]=0
+                self.fim=self.fim-1
+            else:
+                for i in range(self.ini+pos, self.ini,-1):
+                    self.elemento[i] = self.elemento[i-1]
+                self.elemento[self.ini]=0
+                self.ini=self.ini+1
             return rem
 
+    def destroi(self):
+        self.elemento = []
+        self.ini = -1
+        self.fim = -1
 
 def main():
     l = lista(10)
+    print(l.elemento)
     print(l.consultar(2))
     print(l.insere('moto', 0))
     print(l.insere('carro', 1))
@@ -56,6 +67,8 @@ def main():
     print(l.insere('aviao', 0))
     print(l.elemento)
     print(l.remover(1))
+    print(l.elemento)
+    print(l.insere("elem",0))
     print(l.elemento)
 main()
 
