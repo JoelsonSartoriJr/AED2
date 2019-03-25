@@ -34,6 +34,18 @@ class lista:
                     self.ini = self.ini-1
             self.elemento[self.ini+pos] = nodo
 
+    def remover(self, pos):
+        if pos < 0 or pos > (self.fim-self.ini):
+            return "Error: Impossivel apagar lista vazia"
+        else:
+            rem = self.elemento[self.ini+pos]
+            for i in range(self.ini+pos, self.fim):
+                self.elemento[i] = self.elemento[i+1]
+            self.elemento[self.fim]=0
+            self.fim=self.fim-1
+            return rem
+
+
 def main():
     l = lista(10)
     print(l.consultar(2))
@@ -43,6 +55,7 @@ def main():
     print(l.elemento)
     print(l.insere('aviao', 0))
     print(l.elemento)
-    
+    print(l.remover(1))
+    print(l.elemento)
 main()
 
