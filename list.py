@@ -6,11 +6,24 @@ class lista:
         self.fim = -1
         self.maxm = maxm
 
+    def consultaElement(self, element):
+        for i in range(self.ini, self.fim):
+            if self.elemento[i] == element:
+                return i
+        return -1
+
     def consultar(self, pos):
         if pos > (self.fim - self.ini) or pos < self.ini:
             return False
         else:
             return self.elemento[self.ini+pos]
+
+    def insereExp(self,n1,n2):
+        index = self.consultaElement(n1)
+        if index == -1:
+            print("Valor não consta na lista")
+            return -1
+        self.insere(n2, index)
 
     def insere(self, nodo, pos):
          #Posicao maior que o espaco alocado
@@ -70,5 +83,6 @@ def main():
     print(l.elemento)
     print(l.insere("elem",0))
     print(l.elemento)
-main()
-
+    print(l.consultaElement("aviao"))
+    l.insereExp("aviaao", "gato")
+    print(l.elemento)
