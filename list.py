@@ -7,7 +7,7 @@ class lista:
         self.maxm = maxm
 
     def consultaElement(self, element):
-        for i in range(self.ini, self.fim):
+        for i in range(self.ini, self.fim+1):
             if self.elemento[i] == element:
                 return i
         return -1
@@ -86,3 +86,12 @@ def main():
     print(l.consultaElement("aviao"))
     l.insereExp("aviaao", "gato")
     print(l.elemento)
+
+def main2():
+    l = lista(10)
+    l.insere("carro", 0)
+    l.insere("foguete", 1)
+    l.insereExp("foguete", "macarrao")
+    print(l.elemento)
+
+main2()
