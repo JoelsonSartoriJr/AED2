@@ -7,13 +7,13 @@ class LinkedList:
         self._size = 0
 
     def append(self, elem):
-        if self.head: #Inserção quando a lista não esta vazia 
+        if self.head: #Insercao quando a lista nao esta vazia 
             pointer = self.head
             while (pointer.next):
                 pointer = pointer.next
             pointer.next = Node(elem)
         else:
-            #Inserção primeiro elemento
+            #Insercao primeiro elemento
             self.head = Node(elem)
 
         self._size += 1
@@ -86,5 +86,57 @@ class LinkedList:
                 pointer = pointer.next
             return True
         raise ValueError("{} is not in list".format(elem))
-if __name__ == '__main__':
-    pass
+
+    def __repr__(self):
+        r = "["
+        pointer = self.head
+        while (pointer):
+            r += str(pointer.data) + ","
+            pointer = pointer.next
+        return r + "]"
+
+    def __str__(self):
+        return self.__repr__()
+        
+    def compara(self, lista):
+        pointer = self.head
+        pointer2 = lista.head
+
+        if self._size != len(lista):
+            return False
+
+        while (pointer):
+            if pointer.data != pointer2.data:
+                return False
+            pointer = pointer.next
+            pointer2 = pointer2.next
+        return True
+
+    def reverse(self):
+        prev = None
+        current = self.head
+
+        while (current):
+            nxt = current.next
+            current.next = prev
+            prev = current
+            current = nxt
+        self.head = prev
+        return self.__repr__()
+
+    def maiorMedia(self):
+        pointer = self.head
+        med = 0
+        r = ''
+        while (pointer):
+            med += pointer.data
+            pointer = pointer.next
+        med = med / self._size
+        pointer = self.head
+        cont = 0
+        while (pointer):
+            if pointer.data > med:
+                r += "({},{})".format(pointer.data, cont)
+            pointer = pointer.next
+            cont += 1
+        return r
