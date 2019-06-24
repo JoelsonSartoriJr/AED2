@@ -55,16 +55,14 @@ class Deque:
         if self.head != None:
             elem = self.head.data
             return elem
-        else:
-            print ("fila vazia.")
+        raise IndexError("Deque empty")
     
     def consultEnd(self):
         #retorna o fim sem remover
         if self.tail != None:
             elem = self.tail.data
             return elem
-        else:
-            print ("fila vazia.")        
+        raise IndexError("Deque empty")       
     
     def destroi(self):
         self.ini = -1
