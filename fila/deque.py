@@ -1,73 +1,100 @@
-class Fila:
-    def __init__(self, maxx):
-        self.limit = maxx
-        self.elementos = [0] * maxx
-        self.ini = -1
-        self.end = -1
+from node import Node
+
+class Deque:
+    def __init__(self):
+        self.head = None
+        self.tail = None
         self._size = 0
-        self.offset = -1
 
     def __len__(self):
         return self._size
 
-    def insertIni():
-        pass
-
-    def insertEnd(self, elem):
-        if ((self._size) >= self.limit) or (self.ini - self.end - 1 == 0):
-            raise IndexError("Fila cheia!!")
+    def insertIni(self,data):
+        node = Node(data)
+        if self.head == None:
+            self.head = node
+            self.tail = node
         else:
-            if (self.ini < 0):
-                self.ini = 0
-                self.end = 0
-                self.offset = 0
-            elif (self.end < self.limit):
-                self.end += 1
-                self.offset = self.end
-                if (self.offset > self.limit - 1):
-                    self.offset = 0
-                    self.end = self.offset
-            else:
-                self.offset += 1
-                self.end = self.offset
-            self._size += 1
-            self.elementos[self.offset] = elem
+            node.next = self.head
+            self.head.ant = node
+            self.head = node
+            self.head.ant = None
+        self._size += 1
+
+    def insertEnd(self, data):
+        node = Node(data)
+        if self.head == None:
+            self.head = node
+            self.tail = node
+        else:
+            node.ant = self.tail
+            self.tail.next = node
+            self.tail = node
+        self._size +=1
     
-    def removeIni():
-        pass
+    def removeIni(self):
+        if self._size > 0:
+            elem = self.head.data
+            self.head = self.head.next
+            self._size -= 1
+            self.head.ant = None
+            return elem
+        raise IndexError("Deque empty!")
 
     def removeEnd(self):
-        if (self._size <=0):
-            print("Lista vazia")
+        if self._size > 0:
+            elem = self.tail.data
+            self.tail = self.tail.ant
+            self._size -= 1
+            self.tail.next = None
+            return elem
+        raise IndexError("Deque empty")
+
+    def consultIni(self):
+        #retorna o topo sem remover
+        if self.head != None:
+            elem = self.head.data
+            return elem
         else:
-            if (self.ini <= self.limit - 1):
-                data = self.elementos[self.ini]
-                self.elementos[self.ini] = 0
-                self.ini += 1
-            else:
-                data = self.elementos[self.ini]
-                self.ini = 0
-            self._size -=1
-            return data
-
-    def consultIni():
-        pass
-
-    def consultEnd():
-        pass
+            print ("fila vazia.")
+    
+    def consultEnd(self):
+        #retorna o fim sem remover
+        if self.tail != None:
+            elem = self.tail.data
+            return elem
+        else:
+            print ("fila vazia.")        
     
     def destroi(self):
-        self.elementos = [0] * self.limit
         self.ini = -1
         self.end = -1
         self._size = 0
-        self.offset = -1
+
+    def __repr__(self):
+        r = '['
+        pointer = self.head
+        while (pointer):
+            r = r + str(pointer.data) + ','
+            pointer = pointer.next
+        return r + ']'
+
+    def __str__(self):
+        return self.__repr__()    
+        
         
 
-f = Fila(5)
-f.insertEnd(5)
-f.insertEnd(5)
-print(f.elementos)
-f.removeEnd
-print(f.elementos)
-print(len(f))
+f = Deque()
+
+f.insertIni(1)
+f.insertIni(2)
+f.insertIni(3)
+f.insertEnd(30)
+f.insertEnd(31)
+print(f)
+print('-----------------------')
+f.removeIni()
+print(f)
+print('-----------------------')
+f.removeEnd()
+print(f)
