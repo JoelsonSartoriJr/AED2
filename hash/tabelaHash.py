@@ -24,36 +24,4 @@ class Hash():
             else:
                 return primo
 
-    def hashing(self, newNode):
-        """Computer the position for the new node
-        
-        Arguments:
-            newNode {Node} -- Linked list
-        
-        Returns:
-            inteter -- number
-        """
-        return newNode.key%self._newSize
-    
-    def add(self, data):
-        """Add new data to hash table
-        
-        Arguments:
-            data {Node} -- Linked list
-        
-        Returns:
-            [inter] -- Hash table position
-        """
-        newNode = Node(data[0], data[1])
-        pos = self.hashing(newNode)
-        if self._vector[pos] != 0:
-            point = self._vector[pos]
-            while point.next:
-                point = point.next
-            point.next = newNode
-        else:
-            self._vector[pos] = newNode
-        return pos
 
-    def search(self, data):
-        pass
