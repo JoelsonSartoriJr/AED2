@@ -62,35 +62,51 @@ class Hash():
             data {Node} -- Linked list
         
         Returns:
-            boolean -- True or False
+            boolean -- False
+            integer -- Hash table position
         """
         searchNode = Node(data[0], data[1])
         pos = self.hashing(searchNode)
         if self._vector[pos] != 0 and self._vector[pos].data == searchNode.data:
-            print("({}:{})".format(self._vector[pos].key, self._vector[pos].data))
-            return True
+            #print("({}:{})".format(self._vector[pos].key, self._vector[pos].data))
+            return pos
         elif self._vector[pos] != 0 and self._vector[pos].next != None:
             point = self._vector[pos]
             while point.next:
                 point = point.next
                 if point.data == searchNode.data:
-                    print("({}:{})".format(point.key, point.data))
-                    return True
-            print("Dado não encontrado")
+                    #print("({}:{})".format(point.key, point.data))
+                    return pos
+            #print("Dado não encontrado")
             return False
         else:
-            print("Dado não encontrado")
+            #print("Dado não encontrado")
             return False
 
-    def __del__(self):
+    def removeData(self, data):
+        """Remove data from hash table
+        
+        Arguments:
+            data {Node} -- Linked list
+        
+        Returns:
+            [boolean] -- True or False
         """
-            Destruct Hash table
-        """
-        print("Tabela Hash destruida")
-
-
-a = Hash(10)
-a.add([73,"joão"])
-a.search([73,"Maria"])
-a.add([73,"Maria"])
-a.search([73,"Maria"])
+        pos =  self.search(data)
+        if pos != False:
+            if self._vector[pos].next == None:
+                self._vector[pos] = 0
+                return True
+            else:
+                point = self._vector[pos]
+                while point.next:
+                    if point.data == data:
+                        if point.next != None:
+                            point = point.next
+                            return True
+                        else:
+                            point = None
+                            return True
+                return False
+        else:
+            return False
