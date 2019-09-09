@@ -35,4 +35,24 @@ class Hash():
         """
         return newNode.key%self._newSize
     
+    def add(self, data):
+        """Add new data to hash table
+        
+        Arguments:
+            data {Node} -- Linked list
+        
+        Returns:
+            [inter] -- Hash table position
+        """
+        newNode = Node(data[0], data[1])
+        pos = self.hashing(newNode)
+        if self._vector[pos] != 0:
+            point = self._vector[pos]
+            while point.next:
+                point = point.next
+            point.next = newNode
+        else:
+            self._vector[pos] = newNode
+        return pos
+
 
