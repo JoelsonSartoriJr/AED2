@@ -82,6 +82,12 @@ class Hash():
             print("Dado não encontrado")
             return False
 
+    def __del__(self):
+        """
+            Destruct Hash table
+        """
+        print("Tabela Hash destruida")
+
 
 a = Hash(10)
 a.add([73,"joão"])
