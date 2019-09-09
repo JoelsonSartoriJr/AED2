@@ -110,3 +110,15 @@ class Hash():
                 return False
         else:
             return False
+
+
+tabela = Hash(7)
+tabela.add([73,'joão'])
+tabela.add([15,'carlos'])
+tabela.add([44,'marcia'])
+tabela.add([37,'ronaldo'])
+tabela.add([30,'michele'])
+tabela.add([59,'darci'])
+tabela.add([61,'joana'])
+tabela.add([99,'deise'])
+print(tabela._vector)
