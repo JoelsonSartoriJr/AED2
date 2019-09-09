@@ -15,7 +15,7 @@ class Hash():
         """Computer next prime number
         
         Returns:
-            [integer] -- number
+            integer -- number
         """
         primo = self._size + self._size//2 + 1
         while True:
@@ -31,7 +31,7 @@ class Hash():
             newNode {Node} -- Linked list
         
         Returns:
-            inteter -- number
+            integer -- number
         """
         return newNode.key%self._newSize
     
@@ -42,7 +42,7 @@ class Hash():
             data {Node} -- Linked list
         
         Returns:
-            [inter] -- Hash table position
+            integer -- Hash table position
         """
         newNode = Node(data[0], data[1])
         pos = self.hashing(newNode)
@@ -55,4 +55,36 @@ class Hash():
             self._vector[pos] = newNode
         return pos
 
+    def search(self, data):
+        """Search data in hash table
+        
+        Arguments:
+            data {Node} -- Linked list
+        
+        Returns:
+            boolean -- True or False
+        """
+        searchNode = Node(data[0], data[1])
+        pos = self.hashing(searchNode)
+        if self._vector[pos] != 0 and self._vector[pos].data == searchNode.data:
+            print("({}:{})".format(self._vector[pos].key, self._vector[pos].data))
+            return True
+        elif self._vector[pos] != 0 and self._vector[pos].next != None:
+            point = self._vector[pos]
+            while point.next:
+                point = point.next
+                if point.data == searchNode.data:
+                    print("({}:{})".format(point.key, point.data))
+                    return True
+            print("Dado não encontrado")
+            return False
+        else:
+            print("Dado não encontrado")
+            return False
 
+
+a = Hash(10)
+a.add([73,"joão"])
+a.search([73,"Maria"])
+a.add([73,"Maria"])
+a.search([73,"Maria"])
