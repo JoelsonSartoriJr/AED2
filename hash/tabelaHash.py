@@ -24,4 +24,15 @@ class Hash():
             else:
                 return primo
 
+    def hashing(self, newNode):
+        """Computer the position for the new node
+        
+        Arguments:
+            newNode {Node} -- Linked list
+        
+        Returns:
+            inteter -- number
+        """
+        return newNode.key%self._newSize
+    
 
