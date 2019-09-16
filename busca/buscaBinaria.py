@@ -20,7 +20,7 @@ def binarySearch(v,n):
     else:
         return False
 
-def binary_Search(v, start, end, n):
+def binary_Search(v, start = 0, end = len(v), n):
     """binary search in an ordered vector
     
     Arguments:
