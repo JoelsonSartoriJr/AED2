@@ -9,7 +9,7 @@ class Hash():
         """
         self._size = size
         self._newSize = self.primo()
-        self._vector = [0]*(self._newSize)
+        self._vector = [0]*self._newSize
 
     def primo(self):
         """Computer next prime number
@@ -17,7 +17,7 @@ class Hash():
         Returns:
             integer -- number
         """
-        primo = self._size + self._size//2 + 1
+        primo = self._size+1
         while True:
             if primo%2 == 0 or primo%3 == 0 or primo%5 == 0 or primo%7 == 0:
                 primo +=1
