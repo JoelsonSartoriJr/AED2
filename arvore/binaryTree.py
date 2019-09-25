@@ -14,4 +14,5 @@ class BinaryTree():
         else:
             while True:
                 point = point.ant
+        return True
 
