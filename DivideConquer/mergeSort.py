@@ -1,5 +1,5 @@
 def MergeSort(arr):
-    """Divide and COnquer, sorted array
+    """Divide and Conquer, sorted array
     
     Arguments:
         arr {array} -- sorted array
@@ -40,4 +40,4 @@ if __name__ == '__main__':
     print(arr) 
     MergeSort(arr) 
     print("Sorted array is: ", end="\n") 
-    print(arr) 
+    print(arr)
