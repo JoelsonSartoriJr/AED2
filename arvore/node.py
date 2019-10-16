@@ -6,5 +6,5 @@ class Node():
             data {data} -- data reference to tree
         """
         self.data = data
-        self.next = None
-        self.ant = None
+        self.left = None
+        self.rigth = None
