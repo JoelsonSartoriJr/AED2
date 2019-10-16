@@ -5,6 +5,6 @@ class Node():
         Arguments:
             data {data} -- data reference to tree
         """
-        self.data = data
         self.left = None
+        self.data = data
         self.rigth = None

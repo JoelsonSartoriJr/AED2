@@ -16,10 +16,9 @@ class BinaryTree():
         """Add elem in Tree
         
         Arguments:
-            data {float/integer} -- Valeu to add in tree
+            data {float/integer} -- Value to add in tree
         """
-        pointer = self.root
-        if pointer == None:
+        if self.root == None:
             self.root = Node(data)
         else:
             self._add(data, self.root)
