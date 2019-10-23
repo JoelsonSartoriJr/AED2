@@ -53,9 +53,9 @@ class BinaryTree():
         if data == node.data:
             return True
         elif data < node.data and node.left != None:
-            return _find(data, node.left)
+            return self._find(data, node.left)
         elif data > node.data and node.rigth != None:
-            return _find(data, node.rigth)
+            return self._find(data, node.rigth)
     
     def printTree(self):
         """Print Binary tree
