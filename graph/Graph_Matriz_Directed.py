@@ -39,7 +39,12 @@ class Graph_Matriz():
             return False
 
     def isolated_vertice(self, vertice):
-        pass
+        for i in range(self.v):
+            if (self.matriz_adj[vertice][i] != None) or (self.matriz_adj[i][vertice] != None):
+                print("Vertice tem conexão")
+                return False
+        print("Vertice não tem conexão")
+        return True
 
     def __str__(self):
         return '\n'.join('|'.join(map(str, row)) for row in self.matriz_adj)
